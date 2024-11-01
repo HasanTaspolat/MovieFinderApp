@@ -10,18 +10,25 @@ body {
     .container {
         max-width: 1280px;
         margin: 0 auto;
+
     }
     .skeleton-wrapper {
         max-width: 1280px;
         margin: 0 auto;
+        padding: 80px;
+        margin: 0 auto;
+        justify-content: center;
     }
 
     .grid-container {
+        max-width: 1280px;
         display: grid;
         gap: 22px;
-        padding: 20px;
+        padding: 80px;
+        padding-top: 45px;
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
         justify-items: center;
+        margin: 0 auto;
 
         .custom-cards-style {
             display: flex;

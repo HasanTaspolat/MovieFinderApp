@@ -9,23 +9,21 @@ import { selectPage } from '../redux/slices/paginationSlice';
 export function useFetchMovies() {
   const dispatch = useDispatch<AppDispatch>();
 
-  // Local loading state to manage loading manually
-  const [loading, setLoading] = useState(false);
-
   const searchTerm = useSelector(selectSearchTerm);
   const year = useSelector(selectYear);
   const page = useSelector(selectPage);
   const movies = useSelector(selectMovies);
 
-  useEffect(() => {
-    // Set loading to true before dispatching the action
-    setLoading(true);
+  const [loading, setLoading] = useState(false);
 
-    // Dispatch fetchMovies and handle loading state manually
+  useEffect(() => {
+    if (searchTerm.trim() === '') return; // Prevent empty search
+
+    setLoading(true);
     dispatch(fetchMovies({ searchTerm, year, page }))
-      .unwrap() // Ensures we can use .then/.catch for async actions
-      .then(() => setLoading(false)) // Set loading to false on success
-      .catch(() => setLoading(false)); // Set loading to false on failure
+      .unwrap()
+      .then(() => setLoading(false))
+      .catch(() => setLoading(false));
   }, [dispatch, searchTerm, year, page]);
 
   return { movies, loading };
