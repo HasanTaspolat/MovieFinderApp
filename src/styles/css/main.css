@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0c0c0c;
+  color: white;
+}
+body .container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+body .skeleton-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+body .grid-container {
+  display: grid;
+  gap: 22px;
+  padding: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  justify-items: center;
+}
+body .grid-container .custom-cards-style {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+body .grid-container .custom-cards-style__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
