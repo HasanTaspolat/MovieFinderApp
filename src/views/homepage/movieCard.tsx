@@ -15,7 +15,7 @@ interface ImgMediaCardProps {
 export default function ImgMediaCard({ title, description, image }: ImgMediaCardProps) {
   return (
     <Card sx={{ minWidth: 220 }} className='custom-cards-style'>
-      <CardMedia component="img" alt={title} height="140" image={image} />
+      <CardMedia className='card-image' component="img" alt={title} height="200" image={image} />
       <CardContent className='custom-cards-style__content'>
         <Typography gutterBottom variant="h5" component="div">
           {title}

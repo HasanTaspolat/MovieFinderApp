@@ -40,6 +40,10 @@ body .grid-container .custom-cards-style {
   justify-content: space-between;
   width: 100%;
 }
+body .grid-container .custom-cards-style .card-image {
+  min-height: 200px;
+  object-fit: fill;
+}
 body .grid-container .custom-cards-style__content {
   display: flex;
   flex-direction: column;

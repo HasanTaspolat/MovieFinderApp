@@ -11,7 +11,6 @@ export default function SearchBar() {
   const [searchTerm, setSearchTermLocal] = useState('');
   const [debouncedTerm, setDebouncedTerm] = useState(searchTerm);
 
-  // Debounce search term with onChange
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTermLocal(event.target.value);
   };
@@ -19,19 +18,17 @@ export default function SearchBar() {
   useEffect(() => {
     const debounceTimeout = setTimeout(() => {
       setDebouncedTerm(searchTerm);
-    }, 500); // Debounce delay in ms
+    }, 500);
 
-    return () => clearTimeout(debounceTimeout); // Cleanup on unmount or change
+    return () => clearTimeout(debounceTimeout);
   }, [searchTerm]);
 
-  // Dispatch only when debouncedTerm updates
   useEffect(() => {
     if (debouncedTerm.trim() !== '') {
       dispatch(setSearchTerm(debouncedTerm));
     }
   }, [debouncedTerm, dispatch]);
 
-  // Trigger search on Enter key press
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && searchTerm.trim() !== '') {
       dispatch(setSearchTerm(searchTerm));
@@ -42,8 +39,8 @@ export default function SearchBar() {
     <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', maxWidth: 400, margin: 'auto', mt: 2 }}>
       <Input
         value={searchTerm}
-        onChange={handleSearchChange} // Debounced search input
-        onKeyDown={handleKeyDown} // Enter key detection
+        onChange={handleSearchChange}
+        onKeyDown={handleKeyDown}
         placeholder="Search for movies..."
         startAdornment={
           <InputAdornment position="start">
