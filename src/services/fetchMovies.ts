@@ -26,5 +26,5 @@ export async function fetchMoviesFromAPI({
   });
 
   const response = await axios.get(`${BASE_URL}?${params.toString()}`);
-  return response.data.Search || [];
+  return response.data || [];
 }

@@ -1,3 +1,4 @@
+// src/redux/slices/moviesSlice.ts
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { fetchMoviesFromAPI } from '../../services/fetchMovies';
@@ -11,7 +12,9 @@ interface FetchMoviesParams {
 export const fetchMovies = createAsyncThunk(
   'movies/fetchMovies',
   async (params: FetchMoviesParams) => {
-    return await fetchMoviesFromAPI(params);
+    const response = await fetchMoviesFromAPI(params);
+    console.log(response);
+    return response;
   }
 );
 
@@ -19,12 +22,16 @@ interface MoviesState {
   list: Array<any>;
   loading: boolean;
   error: string | null;
+  totalResults: number;
+  totalPages: number;
 }
 
 const initialState: MoviesState = {
   list: [],
   loading: false,
   error: null,
+  totalResults: 0,
+  totalPages: 0,
 };
 
 const moviesSlice = createSlice({
@@ -34,19 +41,26 @@ const moviesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchMovies.pending, (state) => {
-        console.log("Fetch movies pending...");
         state.loading = true;
         state.error = null;
-        console.log(state.loading)
       })
       .addCase(fetchMovies.fulfilled, (state, action) => {
-        console.log("Fetch movies fulfilled...");
         state.loading = false;
-        console.log(state.loading)
-        state.list = action.payload;
+
+        // Check if the API response contains a "Search" key
+        if (action.payload.Search) {
+          state.list = action.payload.Search; // Assign movies from "Search" key
+          state.totalResults = parseInt(action.payload.totalResults, 10) || 0;
+          state.totalPages = Math.ceil(state.totalResults / 10); // Assuming 10 results per page
+        } else {
+          // Handle unexpected data structure by clearing list
+          state.list = [];
+          state.totalResults = 0;
+          state.totalPages = 0;
+          state.error = 'Unexpected response structure';
+        }
       })
       .addCase(fetchMovies.rejected, (state, action) => {
-        console.log("Fetch movies rejected...");
         state.loading = false;
         state.error = action.error.message || 'Failed to fetch movies';
       });
@@ -55,4 +69,7 @@ const moviesSlice = createSlice({
 
 export const selectMovies = (state: RootState) => state.movies.list;
 export const selectMoviesLoading = (state: RootState) => state.movies.loading;
+export const selectTotalResults = (state: RootState) => state.movies.totalResults;
+export const selectTotalPages = (state: RootState) => state.movies.totalPages;
+
 export default moviesSlice.reducer;

@@ -10,6 +10,7 @@ body {
 body .container {
   max-width: 1280px;
   margin: 0 auto;
+  padding: 12px 80px 12px;
 }
 body .skeleton-wrapper {
   max-width: 1280px;
@@ -18,13 +19,18 @@ body .skeleton-wrapper {
   margin: 0 auto;
   justify-content: center;
 }
+body .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 0;
+}
 body .grid-container {
   max-width: 1280px;
   display: grid;
   gap: 22px;
-  padding: 80px;
-  padding-top: 45px;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  padding: 12px 80px 12px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   justify-items: center;
   margin: 0 auto;
 }
