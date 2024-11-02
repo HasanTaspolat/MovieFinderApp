@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, Box, IconButton } from '@mui/material';
+import { FormControl, MenuItem, Select, SelectChangeEvent, Box, IconButton } from '@mui/material';
 import { FilterX } from 'lucide-react';
-import { setYear, setType, resetFilters, selectYear, selectType } from '../../redux/slices/filterSlice';
+import { setYear, setType, resetFilters } from '../../redux/slices/filterSlice';
 import { fetchMovies } from '../../redux/slices/moviesSlice';
 import { selectSearchTerm } from '../../redux/slices/searchSlice';
 import { selectPage } from '../../redux/slices/paginationSlice';
@@ -47,9 +47,10 @@ export default function Filters() {
 
   return (
     <Box className="filter-wrapper" sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-      <span>Filters:</span>
+      <span className='filter-text'>Filters:</span>
       
       <FormControl className='input-wrapper' variant="outlined">
+      <label>Year:</label>
         <Select
           value={localYear}
           placeholder='Year'
@@ -66,6 +67,7 @@ export default function Filters() {
       </FormControl>
 
       <FormControl className='input-wrapper' variant="outlined">
+        <label>Types:</label>
         <Select
           placeholder='Type'
           value={localType}

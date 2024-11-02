@@ -26,7 +26,6 @@ export default function ImgMediaCard({ title, description, image, id }: ImgMedia
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
         <Button size="small" onClick={handleLearnMoreClick}>Learn More</Button> {/* Link to detail page */}
       </CardActions>
     </Card>

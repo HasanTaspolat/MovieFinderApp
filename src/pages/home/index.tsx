@@ -5,7 +5,7 @@ import NotFound from '../../components/notFound';
 import SkeletonLoader from '../../views/homepage/loadingSkeleton';
 import SearchBar from '../../views/homepage/searchBar';
 import PaginationComponent from '../../views/homepage/pagination';
-import { selectTotalResults, selectTotalPages, selectMovies, selectMoviesLoading } from '../../redux/slices/moviesSlice';
+import { selectTotalResults, selectTotalPages, selectMoviesLoading } from '../../redux/slices/moviesSlice';
 import '../../styles/css/main.css';
 import Filters from '../../views/homepage/filters';
 
