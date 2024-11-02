@@ -5,6 +5,7 @@ import { fetchMoviesFromAPI } from '../../services/fetchMovies';
 
 interface FetchMoviesParams {
   searchTerm?: string;
+  type?: string;
   year?: string;
   page?: number;
 }
@@ -13,7 +14,6 @@ export const fetchMovies = createAsyncThunk(
   'movies/fetchMovies',
   async (params: FetchMoviesParams) => {
     const response = await fetchMoviesFromAPI(params);
-    console.log(response);
     return response;
   }
 );
@@ -47,13 +47,11 @@ const moviesSlice = createSlice({
       .addCase(fetchMovies.fulfilled, (state, action) => {
         state.loading = false;
 
-        // Check if the API response contains a "Search" key
         if (action.payload.Search) {
-          state.list = action.payload.Search; // Assign movies from "Search" key
+          state.list = action.payload.Search;
           state.totalResults = parseInt(action.payload.totalResults, 10) || 0;
-          state.totalPages = Math.ceil(state.totalResults / 10); // Assuming 10 results per page
+          state.totalPages = Math.ceil(state.totalResults / 10);
         } else {
-          // Handle unexpected data structure by clearing list
           state.list = [];
           state.totalResults = 0;
           state.totalPages = 0;

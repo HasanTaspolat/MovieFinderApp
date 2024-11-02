@@ -6,7 +6,7 @@ const BASE_URL = 'https://www.omdbapi.com/';
 
 interface FetchMoviesParams {
   searchTerm?: string;
-  type?: 'movie' | 'series' | 'episode';
+  type?: string;
   year?: string;
   page?: number;
 }

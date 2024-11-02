@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Pagination from '@mui/material/Pagination';
-import PaginationItem from '@mui/material/PaginationItem';
 import Stack from '@mui/material/Stack';
 import { selectTotalPages } from '../../redux/slices/moviesSlice';
 import { setPage } from '../../redux/slices/paginationSlice';

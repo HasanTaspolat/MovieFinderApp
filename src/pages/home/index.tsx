@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { useFetchMovies } from '../../hooks/useFetchMovies';
 import ImgMediaCard from '../../views/homepage/movieCard';
@@ -8,6 +7,7 @@ import SearchBar from '../../views/homepage/searchBar';
 import PaginationComponent from '../../views/homepage/pagination';
 import { selectTotalResults, selectTotalPages, selectMovies, selectMoviesLoading } from '../../redux/slices/moviesSlice';
 import '../../styles/css/main.css';
+import Filters from '../../views/homepage/filters';
 
 export default function MainPage() {
   const { movies } = useFetchMovies();
@@ -20,11 +20,12 @@ export default function MainPage() {
       <SearchBar />
 
       {totalResults > 0 && (
-        <div className='container'>
+        <div className='container filters'>
           <p>{`${totalResults} results found across ${totalPages} pages`}</p>
+          <Filters/>
         </div>
       )}
-      
+
       {loading ? (
         <SkeletonLoader />
       ) : movies.length === 0 ? (
