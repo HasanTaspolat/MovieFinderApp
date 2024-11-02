@@ -1,4 +1,3 @@
-// src/redux/slices/moviesSlice.ts
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { fetchMoviesFromAPI } from '../../services/moviesService';
