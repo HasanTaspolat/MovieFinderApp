@@ -26,6 +26,8 @@ export default function SearchBar() {
   useEffect(() => {
     if (debouncedTerm.trim() !== '') {
       dispatch(setSearchTerm(debouncedTerm));
+    } else {
+      dispatch(setSearchTerm('Pokemon'));
     }
   }, [debouncedTerm, dispatch]);
 
@@ -41,6 +43,7 @@ export default function SearchBar() {
         value={searchTerm}
         onChange={handleSearchChange}
         onKeyDown={handleKeyDown}
+        className='search-bar'
         placeholder="Search for movies..."
         startAdornment={
           <InputAdornment position="start">

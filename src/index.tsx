@@ -3,16 +3,16 @@ import './index.css';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import reportWebVitals from './reportWebVitals';
-import MainPage from './pages/home';
+import App from './App';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
-
-        <Provider store={store}>
-        <MainPage/>
-    </Provider>
-
+  <Provider store={store}>
+    <App />
+  </Provider>
 );
+
 reportWebVitals();

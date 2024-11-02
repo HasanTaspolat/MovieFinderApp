@@ -1,13 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-
-interface PaginationState {
-  page: number;
-}
-
-const initialState: PaginationState = {
-  page: 1,
-};
+import { initialState } from '../../types';
 
 const paginationSlice = createSlice({
   name: 'pagination',

@@ -3,10 +3,7 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
-
-interface SkeletonLoaderProps {
-  count?: number;
-}
+import { SkeletonLoaderProps } from '../../types';
 
 export default function SkeletonLoader({ count = 10 }: SkeletonLoaderProps) {
   return (

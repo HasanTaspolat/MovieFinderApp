@@ -1,90 +1,209 @@
 * {
     margin: 0;
-    padding: 0
-}
-
-body {
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  body {
     background-color: #0c0c0c;
     color: white;
+    
+    .centered-item {
+        margin: 0 auto;
 
+        .search-bar {
+            margin: 12px;
+        }
+    }
+    
     .container {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 12px 80px 12px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 12px 80px;
 
-        &.filters {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: 12px;
-        }
-    }
-    .skeleton-wrapper {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 80px;
-        margin: 0 auto;
-        justify-content: center;
-    }
-
-    .pagination {
+      @media (max-width: 641px) {
+        padding: 12px 12px;
+      }
+  
+      &.filters {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        padding: 24px 0;
+        flex-wrap: wrap;
+        margin-top: 12px;
+        gap: 12px 0;
+      }
     }
-
+  
+    .skeleton-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 80px;
+      justify-content: center;
+    }
+  
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 0;
+    }
+  
     .filter-wrapper {
-        display: flex;
-        justify-content: end;
-        gap: 16px;
+      display: flex;
+      justify-content: end;
+      gap: 16px;
 
-        
-        .MuiFormLabel-root {
-            color: #2f9aff;
-        }
-
-        .year-filter {
-            background-color: #fff;
-            font-size: 12px;
-            height: 45px;
-            width: 120px;
-        }
-
-        .combo-box {
-            background-color: #fff;
-            height: 45px;
-        }
+      .input-wrapper {
+        min-width: auto;
+      }
+  
+      .MuiFormLabel-root {
+        color: #2f9aff;
+      }
+  
+      .year-filter {
+        background-color: #fff;
+        font-size: 12px;
+        height: 55px;
+        width: 120px;
+        min-width: auto;
+      }
     }
-
+  
     .grid-container {
-        max-width: 1280px;
-        display: grid;
-        gap: 22px;
-        padding: 12px 80px 12px;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        justify-items: center;
-        margin: 0 auto;
-
-        .custom-cards-style {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 100%;
-
-            .card-image {
-               min-height: 200px;
-               object-fit: fill;
-            }
-
-            &__content {
-               display: flex;
-               flex-direction: column;
-               justify-content: space-between;
-               height: 100%;
-            }
+      max-width: 1280px;
+      display: grid;
+      gap: 22px;
+      padding: 12px 80px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      justify-items: center;
+      margin: 0 auto;
+      @media (max-width: 641px) {
+        padding: 12px 12px;
+      }
+  
+      .custom-cards-style {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+  
+        .card-image {
+          min-height: 200px;
+          object-fit: fill;
         }
+  
+        &__content {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 100%;
+        }
+      }
     }
-
-}
+  
+    .movie-detail {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+  
+      .movie-title {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+        color: white;
+      }
+  
+      .movie-poster {
+        max-width: 300px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      }
+  
+      .movie-details {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        color: #dcdcdc;
+  
+        .detail-item {
+          font-size: 1rem;
+  
+          strong {
+            color: #2f9aff;
+          }
+        }
+  
+        .movie-plot {
+          font-size: 0.9rem;
+          margin-top: 20px;
+          color: #aaaaaa;
+        }
+      }
+    }
+  }
+  .header {
+    background-color: #0c0c0c;
+    padding: 16px 80px;
+    color: white;
+    border-bottom: 1px solid #82828218;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
+    .header-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+  
+        a {
+          color: #ffffff;
+          text-decoration: none;
+  
+          &:hover {
+            color: #2f9aff;
+          }
+        }
+      }
+  
+      .nav-links {
+        display: flex;
+        gap: 16px;
+  
+        a {
+          color: #ffffff;
+          text-decoration: none;
+          font-size: 1rem;
+  
+          &.active {
+            color: #2f9aff;
+            font-weight: bold;
+            border-bottom: 2px solid #2f9aff;
+          }
+  
+          &:hover {
+            color: #2f9aff;
+          }
+        }
+      }
+    }
+  
+    @media (max-width: 810px) {
+      padding: 12px;
+      .header-content {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+  

@@ -1,14 +1,8 @@
 // src/redux/slices/moviesSlice.ts
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import { fetchMoviesFromAPI } from '../../services/fetchMovies';
-
-interface FetchMoviesParams {
-  searchTerm?: string;
-  type?: string;
-  year?: string;
-  page?: number;
-}
+import { fetchMoviesFromAPI } from '../../services/moviesService';
+import { FetchMoviesParams } from '../../types';
 
 export const fetchMovies = createAsyncThunk(
   'movies/fetchMovies',

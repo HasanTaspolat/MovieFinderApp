@@ -16,7 +16,7 @@ export default function MainPage() {
   const totalPages = useSelector(selectTotalPages);
 
   return (
-    <div>
+    <div className='centered-item'>
       <SearchBar />
 
       {totalResults > 0 && (
@@ -33,7 +33,7 @@ export default function MainPage() {
       ) : (
         <div className="grid-container container">
           {movies.map((movie) => (
-            <ImgMediaCard key={movie.imdbID} title={movie.Title} description={movie.Year} image={movie.Poster} />
+            <ImgMediaCard key={movie.imdbID} id={movie.imdbID} title={movie.Title} description={movie.Year} image={movie.Poster} />
           ))}
         </div>
       )}
